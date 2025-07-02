@@ -6,9 +6,11 @@ from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
+from kivy.logger import Logger, LOG_LEVELS
 from kivy.uix.button import Button
 
-def main():
+def main() -> None:
+	Logger.setLevel(LOG_LEVELS["critical"])
 	AppKwantet().run()
 
 	# arguments = sys.argv[1:]
@@ -24,7 +26,7 @@ def main():
 	# 	beurt_count += 1
 
 class GridLayoutKwantet(GridLayout):
-	def __init__(self, **kwargs):
+	def __init__(self, **kwargs) -> None:
 		super(GridLayoutKwantet, self).__init__(**kwargs)
 
 		self.cols = 5
@@ -34,15 +36,15 @@ class GridLayoutKwantet(GridLayout):
 		self.add_widget(self.name)
 
 class AppKwantet(App):
-	def build(self):
+	def build(self) -> None:
 		return GridLayoutKwantet()
 
 class Kaarten:
-	def __init__(self, onbekende_kaarten):
+	def __init__(self, onbekende_kaarten) -> None:
 		self.onbekende_kaarten = onbekende_kaarten
 		self.bekende_kaarten: set(Kaart)
 
-	def vraag(self, kaart):
+	def vraag(self, kaart) -> None:
 		if kaart in self.bekende_kaarten:
 			pass
 		else:
@@ -50,20 +52,20 @@ class Kaarten:
 
 
 class Speler:
-	def __init__(self, speler_name):
+	def __init__(self, speler_name) -> None:
 		self.speler_name = speler_name
 		self.speler_hand = {}
 		for speler in speler_count:
 			speler_hand
 
 class Categorie:
-	def __init__(self, categorie_name):
+	def __init__(self, categorie_name) -> None:
 		self.categorie_name = categorie_name
 		self.categorie_kaarten: set(Kaart)
 		self.kwartet_door: None | Speler
 		self.kwartet_door = None
 
-	def wordt_kwartet(self, speler):
+	def wordt_kwartet(self, speler) -> None:
 		self.kwartet_door = speler
 		speler.kwartetten.add(self)
 
