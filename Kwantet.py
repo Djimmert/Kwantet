@@ -36,8 +36,10 @@ class GridLayoutKwantet(GridLayout):
 		self.add_widget(self.name)
 
 class AppKwantet(App):
-	def build(self) -> None:
-		return GridLayoutKwantet()
+	def build(self):
+		grid_layout_kwantet = GridLayoutKwantet()
+		print(type(grid_layout_kwantet))
+		return grid_layout_kwantet
 
 class Kaarten:
 	def __init__(self, onbekende_kaarten) -> None:
